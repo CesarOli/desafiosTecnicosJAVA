@@ -34,10 +34,6 @@ public class TASK1 {
             else {
                 System.out.println("Esta frase " + scanner + " não é um Palíndromo.");
             }
-
         }
-     
-        
      }
- 
 } 
