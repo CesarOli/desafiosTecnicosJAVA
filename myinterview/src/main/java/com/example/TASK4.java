@@ -8,5 +8,7 @@ package com.example;
  *
  */
 public class TASK4 {
-
+    public static void main(String[] args) {
+        System.out.println("Ambiente de Desenvolvimento JAVA configurado com sucesso!!");
+    }
 }
