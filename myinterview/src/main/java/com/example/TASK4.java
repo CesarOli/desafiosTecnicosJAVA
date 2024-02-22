@@ -44,9 +44,11 @@ public class TASK4 {
             // obtem o corpo da resposta como uma string
             String responseBody = EntityUtils.toString(response.getEntity());
 
-
             //processa a resposta(analisa, exibe, salva)
             System.out.println("Código de status da resposta: " + response.getStatusLine().getStatusCode());
+            System.out.println("Corpo da resposta: " + responseBody);
+
+            
         } catch (IOException e) {
             // tratamento da exceção IOException
             e.printStackTrace();
