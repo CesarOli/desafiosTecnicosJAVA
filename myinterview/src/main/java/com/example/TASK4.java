@@ -27,10 +27,11 @@ import org.apache.http.util.EntityUtils;
  */
 public class TASK4 {
     public static void main(String[] args) {
+
         //criação do cliente HTTP
         HttpClient httpClient = HttpClients.createDefault();
 
-        //deficição do endpoint da API
+        //definição do endpoint da API
         String apiUrl = "https://3ospphrepc.execute-api.us-west-2.amazonaws.com/prod/RDSLambda";
 
         //criação de uma solicitação GET
@@ -39,7 +40,11 @@ public class TASK4 {
         try {
             //executa a soliticação e obtem a resposta
             HttpResponse response = httpClient.execute(httpGet);
-     
+            
+            // obtem o corpo da resposta como uma string
+            String responseBody = EntityUtils.toString(response.getEntity());
+
+
             //processa a resposta(analisa, exibe, salva)
             System.out.println("Código de status da resposta: " + response.getStatusLine().getStatusCode());
         } catch (IOException e) {
