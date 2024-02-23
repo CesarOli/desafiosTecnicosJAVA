@@ -3,6 +3,9 @@ package com.example;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import software.amazon.awssdk.services.sso.internal.SsoAccessToken;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -51,7 +54,22 @@ public class TASK4 {
 
             //inicializa o mapa para armazenar a contagem de registro por gênero
             Map<String, Integer> genderCountMap = new HashMap<>();
-            
+
+            //iteração sobre os registros no JSON
+            for (JsonNode record : jsonNode) {
+
+                //obtem valor do campo "gender"
+                String gender = record.get("gender").asText();
+
+                //atualiza a contagem no mapa
+                genderCountMap.put(gender, genderCountMap.getOrDefault(gender, 0) + 1);
+            }
+
+            //Exibição do resultado
+            System.out.println("Contagem de registro por gênero:");
+            for (Map.Entry<String, Integer> entry : genderCountMap.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
 
         } catch (IOException e) {
             // tratamento da exceção IOException
