@@ -49,6 +49,10 @@ public class TASK4 {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(responseBody);
 
+            //inicializa o mapa para armazenar a contagem de registro por gênero
+            Map<String, Integer> genderCountMap = new HashMap<>();
+            
+
         } catch (IOException e) {
             // tratamento da exceção IOException
             e.printStackTrace();
