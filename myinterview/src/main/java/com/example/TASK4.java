@@ -1,21 +1,18 @@
 package com.example;
 
-import com.fasterxml.jackson.databind.JsoNode;
+
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.io.IOError;
-import java.io.IOException;
-
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org. apache.http.impl.client.HttpClients;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;;
 
 
 /**
@@ -48,7 +45,10 @@ public class TASK4 {
             System.out.println("Código de status da resposta: " + response.getStatusLine().getStatusCode());
             System.out.println("Corpo da resposta: " + responseBody);
 
-            
+            //adição da lógica para analisar o corpo da resposta JSON
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(responseBody);
+
         } catch (IOException e) {
             // tratamento da exceção IOException
             e.printStackTrace();
