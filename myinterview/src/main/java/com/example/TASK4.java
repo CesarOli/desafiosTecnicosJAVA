@@ -31,6 +31,8 @@ public class TASK4 {
         HttpClient httpClient = HttpClients.createDefault();
         String apiUrl = "https://3ospphrepc.execute-api.us-west-2.amazonaws.com/prod/RDSLambda";
         HttpGet httpGet = new HttpGet(apiUrl);
+        
+        Map<String, Integer> genderCountMap = new HashMap<>();
 
         try {
             HttpResponse response = httpClient.execute(httpGet);
@@ -44,8 +46,6 @@ public class TASK4 {
 
             if (jsonResponse.has("data") && jsonResponse.get("data").isArray()) {
                 JsonNode dataNode = jsonResponse.get("data");
-
-                Map<String, Integer> genderCountMap = new HashMap<>();
 
                 for (JsonNode record : dataNode) {
                     JsonNode genderNode = record.get("gender");
@@ -66,11 +66,6 @@ public class TASK4 {
                 for (Map.Entry<String, Integer> entry : genderCountMap.entrySet()) {
                     System.out.println(entry.getKey() + ": " + entry.getValue());
                 }
-
-            //Exibir o conteudo do Json para depurar
-            System.out.println("Conteúdo do JSON");
-            System.out.println(responseBody);
-
 
         } catch (IOException e) {
             // tratamento da exceção IOException
