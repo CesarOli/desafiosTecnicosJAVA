@@ -55,17 +55,28 @@ public class TASK4 {
                         genderCountMap.put(gender, genderCountMap.getOrDefault(gender, 0) + 1);
                     }
                 }
-
-                //Exibir o conteudo do Json para depurar
-                System.out.println("Conteúdo do JSON");
-                System.out.println(responseBody);
-
             }
                 //Exibição do resultado
                 System.out.println("Contagem de registro por gênero:");
                 for (Map.Entry<String, Integer> entry : genderCountMap.entrySet()) {
                     System.out.println(entry.getKey() + ": " + entry.getValue());
                 }
+
+                //Exibir o conteudo do Json para depurar
+                System.out.println("Conteúdo do JSON");
+                System.out.println(responseBody);
+
+                //Exibir a quantidade de registro para os gêneros M e F.
+                int quantidadeFeminino = genderCountMap.getOrDefault("F", 0);
+                int quantidadeMasculino = genderCountMap.getOrDefault("M", 0);
+
+                System.out.println("Quantidade de registros para o gênero 'F': " + quantidadeFeminino);
+                System.out.println("Quantidade de registro para o gênero 'M': " + quantidadeMasculino);
+                
+                
+                // Exibir o conteúdo do JSON para depuração
+                System.out.println("Conteúdo JSON");
+                System.out.println(responseBody);
 
         } catch (IOException e) {
             // tratamento da exceção IOException
